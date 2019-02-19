@@ -31,6 +31,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 			.scopes("user_info")
 			.autoApprove(true)
 			.redirectUris("http://localhost:8881/ui/login", "http://localhost:8881/login");
+		// At least one redirect_uri must be registered. If not, you will get "error='invalid_request', error_description='At least one redirect_uri must be registered with the client.'"
 	}
 
 }

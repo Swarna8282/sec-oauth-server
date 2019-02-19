@@ -10,7 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 // very important to include @Order(1) or else, it will not direct u to enter your login details but rather give not authenticated
-
 @Configuration
 @EnableResourceServer
 @Order(1)
@@ -24,6 +23,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure (HttpSecurity hSecurity) throws Exception {
+		
 		hSecurity.requestMatchers()
 			.antMatchers("/login", "/oauth/authorize")
 			.and()
@@ -37,6 +37,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure (AuthenticationManagerBuilder builder) throws Exception {
+		
 		builder.inMemoryAuthentication()
 			.withUser("swan").password(passwordEncoder().encode("123")).roles("USER")
 			.and()
